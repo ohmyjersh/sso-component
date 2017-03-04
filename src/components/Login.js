@@ -1,5 +1,5 @@
 import React from 'react';
-import StyleWrapper from './StyleWrapper';
+import StyleWrapperHOC from './StyleWrapperHOC';
 const Login = ({components}) => {
     return <div>
         <components.Container>
@@ -12,4 +12,4 @@ const Login = ({components}) => {
     </div>
 }
 
-export default StyleWrapper(Login);
+export default StyleWrapperHOC(Login);

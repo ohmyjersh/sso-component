@@ -1,7 +1,7 @@
 import React from 'react';
-import * as DefaultComponents from './styles/default'; 
-import * as Product1Components from './styles/product1';
-import * as Product2Components  from './styles/product2';
+import * as DefaultComponents from '../styles/default'; 
+import * as Product1Components from '../styles/product1';
+import * as Product2Components  from '../styles/product2';
 
 const getComponents = (style) => {
     switch(style) {
@@ -14,7 +14,7 @@ const getComponents = (style) => {
     }
 }
 
-const StyleWrapper = (WrappedComponent) => {
+const StyleWrapperHOC = (WrappedComponent) => {
   return (props) => <WrappedComponent {...props} components={getComponents(props.style)} />
 }
-export default StyleWrapper;
+export default StyleWrapperHOC;
