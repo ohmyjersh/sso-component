@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from './components/Login';
+import Login from '../components/Login';
 
 // use redux to handle state and current step of auth
 // login => success => 2fa => redirect
