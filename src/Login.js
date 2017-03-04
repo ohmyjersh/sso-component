@@ -1,6 +1,6 @@
 import React from 'react';
 import StyleWrapper from './StyleWrapper';
-const Idscomponents = ({components}) => {
+const Login = ({components}) => {
     return <div>
         <components.Container>
             <components.Card>
@@ -12,4 +12,4 @@ const Idscomponents = ({components}) => {
     </div>
 }
 
-export default StyleWrapper(Idscomponents);
+export default StyleWrapper(Login);
