@@ -2,23 +2,11 @@ import styled, {injectGlobal} from 'styled-components';
 
 import * as Defaults from './default';
 
-export const Button = styled.button`
-    background-image: none;
-    box-shadow: none;
+export const Button = styled(Defaults.Button)`
     background-color: #a60003;
-    text-shadow: none;
-    text-transform: uppercase;
-    border-radius: 2px;
-    width:100%;
-    padding: .5rem 1rem;
-    font-weight: 100;
-    color: #fff;
-    transition: all .05s ease-in-out;
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    border: none;
+    &:hover {
+     background-color: #a60003;   
+    }
 `;
 
 export const Card = Defaults.Card;

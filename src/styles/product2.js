@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import * as Defaults from './default';
 
 export const Button = styled(Defaults.Button)`
-  color: purple;
-  border-color: purple;
+  background-color: #f7b334;
+  &:hover {
+    background-color:#f9c565;
+  }
 `;
 
 export const Card = Defaults.Card;

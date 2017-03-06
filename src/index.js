@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
 import App from './containers/App';
+import reducer from './state';
 
 const url = window.location.href;
 const style = _getParam('style', url);
 const redirect = _getParam('redirect', url);
 
+const store = createStore(reducer, applyMiddleware(thunk));
+
 ReactDOM.render(
-  <App redirect={redirect} style={style}/>,
+  <Provider store={store}>
+    <App redirect={redirect} style={style}/>
+  </Provider>,
   document.getElementById('root')
 );
 

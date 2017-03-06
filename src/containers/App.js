@@ -1,17 +1,35 @@
 import React from 'react';
+import {bindActionCreators} from 'redux'
+import { connect } from 'react-redux'
 import Login from '../components/Login';
+import ForgotPassword from '../components/ForgotPassword';
+import TwoFactor from '../components/TwoFactor';
+import {actionCreators as actions} from '../state';
 
 // use redux to handle state and current step of auth
 // login => success => 2fa => redirect
 // reset password
 // sign up
 
-const App = ({redirect, style}) => {
+
+const App = (props) => {
     return (
       <div className="App">
-        <Login style={style} redirect={redirect}/>
+        {props.state.currentState === 'LOGIN' ? <Login {...props} /> : null }
+        {props.state.currentState === '2FA' ? <TwoFactor {...props} /> : null }
+        {props.state.currentState === 'ForgotPassword' ? <ForgotPassword {...props} /> : null }
       </div>
     );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return { state: state};
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      actions: bindActionCreators({ ...actions }, dispatch)
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

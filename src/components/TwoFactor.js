@@ -1,11 +1,11 @@
 import React from 'react';
 import StyleWrapperHOC from './StyleWrapperHOC';
 
-const ForgotPassword = ({components}) => {
+const TwoFactor = ({components}) => {
     return (
         <div>
             <components.Container>
-                <components.Label>Enter Email Address</components.Label>
+                <components.Label>Enter 2FA Pin</components.Label>
                 <components.Input />
                 <components.Button>Submit</components.Button>
             </components.Container>
@@ -13,4 +13,4 @@ const ForgotPassword = ({components}) => {
     )
 }
 
-export default StyleWrapperHOC(ForgotPassword);
+export default StyleWrapperHOC(TwoFactor);
