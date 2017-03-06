@@ -4,14 +4,12 @@ const actionTypes =  {
 
 const initialState = {
     currentState:'LOGIN',
-
 }
 
 export default (state = initialState, action) => {
     const {type, payload} = action;
     switch(type) {
         case actionTypes.SUBMIT_LOGIN:
-            console.log(payload);
             return {...state, currentState: '2FA'};
         default:
             return state;
@@ -19,9 +17,8 @@ export default (state = initialState, action) => {
 }
 
 export const actionCreators = {
-    submitLogin: (payload) => ({
+    submitLogin: () => ({
             type: actionTypes.SUBMIT_LOGIN,
-            payload
         }),
     }
 

@@ -15,8 +15,7 @@ import {actionCreators as actions} from '../state';
 const App = (props) => {
     return (
       <div className="App">
-        {props.state.currentState === 'LOGIN' ? <Login {...props} /> : null }
-        {props.state.currentState === '2FA' ? <TwoFactor {...props} /> : null }
+        <Login {...props} />
         {props.state.currentState === 'ForgotPassword' ? <ForgotPassword {...props} /> : null }
       </div>
     );

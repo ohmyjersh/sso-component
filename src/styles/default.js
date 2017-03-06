@@ -14,7 +14,8 @@ export const Button = styled.button`
   padding: 10px 20px 10px 20px;
   text-decoration: none;
   width:100%;
-  
+  box-sizing: border-box;
+
   &:hover { 
   background: #3cb0fd;
   text-decoration: none;
@@ -24,7 +25,8 @@ export const Button = styled.button`
 export const Input = styled.input`
     outline: none;
     position: relative;
-    margin-bottom: 10px;
+    margin: 10px 0px;
+    padding: 5px 5px 5px 15px;
     display: inline-block;
     width: 100%;
     height: 28px;
@@ -38,6 +40,7 @@ export const Input = styled.input`
     border-radius: 4px;
     -webkit-transition: all .3s;
     transition: all .3s;
+    box-sizing: border-box;
 
   &:hover {
     box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
@@ -45,29 +48,42 @@ export const Input = styled.input`
 `;
 
 export const Card = styled.div`
-    padding: 20px;
+    justify-content: center;
     overflow:hidden;
     background: #fff;
     border-radius: 4px;
-    font-size: 12px;
     position: relative;
-    overflow: none;
     -webkit-transition: all .3s;
     transition: all .3s;
     border: 1px solid #d9d9d9;
-    &:hover {
-      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    }
+    box-sizing: border-box;
+`;
+
+ Card.Header = styled.div`
+  border: 1px solid #d9d9d9;
+  padding: 20px;
+`;
+
+Card.Content = styled.div`
+  padding: 20px;
+`;
+
+Card.Footer = styled.div`
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 `;
 
 export const Label = styled.label`
     font-size: 20px;
     color: black;
     margin-bottom: 10px;
+    box-sizing: border-box;
 `;

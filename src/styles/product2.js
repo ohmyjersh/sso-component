@@ -12,4 +12,4 @@ export const Button = styled(Defaults.Button)`
 export const Card = Defaults.Card;
 export const Input = Defaults.Input;
 export const Container = Defaults.Container;
-export const Label = Defaults.Label;
+//export const Label = Defaults.Label;
