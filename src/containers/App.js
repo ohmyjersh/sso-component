@@ -3,7 +3,6 @@ import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux'
 import Login from '../components/Login';
 import ForgotPassword from '../components/ForgotPassword';
-import TwoFactor from '../components/TwoFactor';
 import {actionCreators as actions} from '../state';
 
 // use redux to handle state and current step of auth

@@ -4,7 +4,6 @@ import * as Product1Components from '../styles/product1';
 import * as Product2Components  from '../styles/product2';
 
 const getComponents = (style) => {
-    console.log('get styles');
     switch(style) {
         case 'product1':
             return Product1Components;

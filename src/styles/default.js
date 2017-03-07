@@ -47,6 +47,13 @@ export const Input = styled.input`
   }
 `;
 
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+`;
+
 export const Card = styled.div`
     justify-content: center;
     overflow:hidden;
@@ -57,6 +64,7 @@ export const Card = styled.div`
     transition: all .3s;
     border: 1px solid #d9d9d9;
     box-sizing: border-box;
+    min-width: 400px;
 `;
 
  Card.Header = styled.div`
@@ -74,16 +82,20 @@ Card.Footer = styled.div`
   justify-content: space-between;
 `;
 
-export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-`;
-
 export const Label = styled.label`
     font-size: 20px;
     color: black;
     margin-bottom: 10px;
     box-sizing: border-box;
 `;
+
+export const Error = styled.div`
+    border: 1px solid;
+    border-radius: 3px;
+    margin: 10px 0px;
+    padding:12px;
+    color: #D8000C;
+    font-size:12px;
+    background-color: #FFBABA;
+    box-sizing: border-box;
+`
