@@ -5,6 +5,6 @@ import {
   combineReducers
 } from 'redux-immutable';
 
-export default combineReducers({login:login.reducer, forgot:forgot, signup:signup});
+export default combineReducers({login:login.reducer, forgot:forgot.reducer, signup:signup.reducer});
 
 export const actionCreators = {...login.actionCreators, ...forgot.actionCreators};

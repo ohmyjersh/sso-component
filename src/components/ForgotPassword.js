@@ -1,16 +1,20 @@
 import React from 'react';
-import StyleWrapperHOC from './StyleWrapperHOC';
+import TextField from './common/TextField';  
 
-const ForgotPassword = ({components}) => {
+const ForgotPassword = (props) => {
+    const {components} = props;
     return (
         <div>
-            <components.Container>
-                <components.Label>Enter Email Address</components.Label>
-                <components.Input />
+            <components.Card.Header>Forgot Password</components.Card.Header>
+                <components.Card.Content>
+                    <TextField {...{...props.components, label:'Enter Username', update: (()=> console.log('hi')), value: ''}}/>
                 <components.Button>Submit</components.Button>
-            </components.Container>
+            </components.Card.Content>
+            <components.Card.Footer>
+                <components.Link to="/">Back to login</components.Link>
+            </components.Card.Footer>
         </div>
     )
 }
 
-export default StyleWrapperHOC(ForgotPassword);
+export default ForgotPassword;

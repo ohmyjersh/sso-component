@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
+import StyleWrapperHOC from '../components/StyleWrapperHOC';
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
 
 import {bindActionCreators} from 'redux'
@@ -12,12 +12,17 @@ import ForgotPassword from '../components/ForgotPassword';
 import SignUp from '../components/SignUp';
 import {actionCreators as actions} from '../state';
 const App = (props) => {
+    const {components} = props;
     return (
       <Router>
       <div className="App">
-        <Route exact path="/" render={ (ownProps) => <Login {...props} {...ownProps}/> } />
-        <Route exact path="/forgotpassword" render={(ownProps) => <ForgotPassword {...props} {...ownProps}/> } />
-        <Route exact path="/signup" render={(ownProps) => <SignUp {...props} {...ownProps}/> } />
+          <components.Container>
+            <components.Card>
+              <Route exact path="/" render={ (ownProps) => <Login {...props} {...ownProps}/> } />
+              <Route exact path="/forgotpassword" render={(ownProps) => <ForgotPassword {...props} {...ownProps}/> } />
+              <Route exact path="/signup" render={(ownProps) => <SignUp {...props} {...ownProps}/> } />
+            </components.Card>
+        </components.Container>
       </div>
       </Router>
     );
@@ -39,4 +44,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default StyleWrapperHOC(connect(mapStateToProps, mapDispatchToProps)(App));
