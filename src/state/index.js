@@ -7,4 +7,7 @@ import {
 
 export default combineReducers({login:login.reducer, forgot:forgot.reducer, signup:signup.reducer});
 
-export const actionCreators = {...login.actionCreators, ...forgot.actionCreators};
+export const actionCreators = {
+                              ...login.actionCreators, 
+                              ...forgot.actionCreators, 
+                              ...signup.actionCreators};
