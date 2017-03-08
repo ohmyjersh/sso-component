@@ -1,9 +1,8 @@
 import React from 'react';
 import StyleWrapperHOC from './StyleWrapperHOC';
 const Login = (props) => {
-    console.log(props);
     const {components, actions} = props;
-    if(props.state.getIn(['state', 'login', 'currentState'] === 'LOGGEDIN')) {
+    if(props.state.getIn(['login','currentState']) === 'LOGGEDIN') {
       console.log('go to....');
         window.location.href = props.redirect;
     }
