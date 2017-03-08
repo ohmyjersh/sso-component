@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
-import {bindActionCreators} from 'redux'
+
 import { connect } from 'react-redux'
 import Login from '../components/Login';
 import ForgotPassword from '../components/ForgotPassword';
@@ -29,7 +29,7 @@ const App = (props) => {
 
 App.propTypes = {
   redirect: React.PropTypes.string.isRequired,
-  style: React.PropTypes.string
+  style: React.PropTypes.string.isRequired
 };
 
 
@@ -37,10 +37,5 @@ const mapStateToProps = (state) => {
   return { state: state};
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-      actions: bindActionCreators({ ...actions }, dispatch)
-    }
-};
 
-export default StyleWrapperHOC(connect(mapStateToProps, mapDispatchToProps)(App));
+export default StyleWrapperHOC(connect(state=>({state}), actions)(App));

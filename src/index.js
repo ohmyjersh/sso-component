@@ -12,6 +12,11 @@ const style = _getParam('style', url);
 const redirect = _getParam('redirect', url);
 
 const initialState = Immutable.Map();
+const initialState = Immutable.Map({
+  redirect,
+  style
+});
+
 const store = createStore(reducer,initialState, applyMiddleware(thunk));
 
 ReactDOM.render(
