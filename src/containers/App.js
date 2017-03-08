@@ -11,7 +11,6 @@ import Login from '../components/Login';
 import ForgotPassword from '../components/ForgotPassword';
 import SignUp from '../components/SignUp';
 import {actionCreators as actions} from '../state';
-
 const App = (props) => {
     return (
       <Router>

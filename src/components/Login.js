@@ -2,15 +2,16 @@ import React from 'react';
 import StyleWrapperHOC from './StyleWrapperHOC';
 const Login = (props) => {
     const {components, actions} = props;
+    console.log(actions);
     if(props.state.getIn(['login','currentState']) === 'LOGGEDIN') {
       console.log('go to....');
         window.location.href = props.redirect;
     }
     const username = props.state.getIn(['login','username']);
     const password = props.state.getIn(['login', 'password']);
-    const token = props.state.getIn(['twofactor', 'token']);
+    const token = props.state.getIn(['login', 'token']);
     const loginError = props.state.getIn(['login', 'error']);
-    const tokenError = props.state.getIn(['twofactor', 'error']);
+    const tokenError = props.state.getIn(['login', 'error']);
     return <div>
         <components.Container>
             <components.Card>

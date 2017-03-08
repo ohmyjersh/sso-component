@@ -1,3 +1,4 @@
+import handleRequest from './fakeHandleRequest';
 import Immutable from 'immutable';
 
 const actionTypes =  {
@@ -16,39 +17,37 @@ const initialState = Immutable.Map({
         username:'',
         password:'',
         error:'',
+        token:'',
         isFetching:false
     });
 
-export default (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
     const {type, payload} = action;
     switch(type) {
         case actionTypes.SUCCESS_LOGIN:
             return state.set('currentState', '2FA')
-                        .setIn(['login', 'username'],'')
-                        .setIn(['login', 'password'],'')
-                        .setIn(['login', 'error'], '');
+                        .set('username','')
+                        .set('password','')
+                        .set('error', '');
         case actionTypes.ERROR_LOGIN:
             return state.set('currentState', 'LOGIN')
-                        .setIn(['login', 'username'],'')
-                        .setIn(['login', 'password'],'')
-                        .setIn(['login', 'error'], 'Error logging in....');
+                        .set('username','')
+                        .set('password','')
+                        .set('error', 'Error logging in....');
         case actionTypes.SUCCESS_TOKEN:
             return state.set('currentState', 'LOGGEDIN')
-                        .setIn(['twofactor', 'token'],'')
-                        .setIn(['twofactor', 'error'], 'Error validating 2fa token....');
+                        .set('token','')
+                        .set('error', 'Error validating 2fa token....');
         case actionTypes.ERROR_TOKEN:
-            console.log('error token');
             return state.set('currentState', '2FA')
-                        .setIn(['twofactor', 'token'],'')
-                        .setIn(['twofactor', 'error'], 'Error validating 2fa token....');
+                        .set('token','')
+                        .set('error', 'Error validating 2fa token....');
         case actionTypes.UPDATE_TOKEN:
-            return state.setIn(['twofactor', 'token'], payload);
+            return state.set('token', payload);
         case actionTypes.UPDATE_USERNAME:
-            return state.setIn(['login', 'username'], payload);
+            return state.set('username', payload);
         case actionTypes.UPDATE_PASSWORD:
-            return state.setIn(['login', 'password'], payload);
-        case actionTypes.UPDATE_FORGOT_PASSWORD:
-            return state.setIn(['forgotPassword', 'password'], payload);
+            return state.set('password', payload);
         default:
             return state;
     }
@@ -88,12 +87,6 @@ export const actionCreators = {
             payload
         }
     },
-    updateForgotPassword: (payload) => {
-        return {
-            type:actionTypes.UPDATE_FORGOT_PASSWORD,
-            payload
-        }
-    },
     updateToken: (payload) => {
         return {
             type:actionTypes.UPDATE_TOKEN,
@@ -102,31 +95,12 @@ export const actionCreators = {
     },
     submitLogin: (payload) => {
         return dispatch => {
-            handleRequest(payload)
-            .then(() => dispatch(successLogin()), () => dispatch(errorLogin()));
+            handleRequest(payload, () => dispatch(successLogin()), () => dispatch(errorLogin()));
         }
     },
     submitToken:(payload) => {
         return dispatch => {
-            handleRequest(payload)
-            .then(() => dispatch(successToken()), () => dispatch(errorToken()));
+            handleRequest(payload, () => dispatch(successToken()), () => dispatch(errorToken()));
         }
     }
-}
-
-const handleRequest = (obj) => {
-    return new Promise((resolve, reject) => {
-        if(obj.hasOwnProperty('token')) {
-            if(obj.token === '111111') {
-                return resolve();
-            }
-            return reject();
-        }
-        else if(obj.hasOwnProperty('username') && obj.hasOwnProperty('password')) {
-            if(obj.username === 'username' && obj.password === 'pass123') {
-                return resolve();
-            }
-            return reject();
-        }
-    });
 }
