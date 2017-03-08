@@ -26,7 +26,7 @@ const App = (props) => {
 
 App.propTypes = {
   redirect: React.PropTypes.string.isRequired,
-  style: React.PropTypes.string.isRequired
+  style: React.PropTypes.string
 };
 
 
