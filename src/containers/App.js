@@ -9,33 +9,33 @@ import { connect } from 'react-redux'
 import Login from '../components/Login';
 import ForgotPassword from '../components/ForgotPassword';
 import SignUp from '../components/SignUp';
+import Error from '../components/Error';
 import {actionCreators as actions} from '../state';
 const App = (props) => {
-    const {components} = props;
-    return (
+    const {components, referrer, redirect} = props;
+    return (        
       <Router>
       <div className="App">
           <components.Container>
             <components.Card>
-              <Route exact path="/" render={ (ownProps) => <Login {...props} {...ownProps}/> } />
-              <Route exact path="/forgotpassword" render={(ownProps) => <ForgotPassword {...props} {...ownProps}/> } />
-              <Route exact path="/signup" render={(ownProps) => <SignUp {...props} {...ownProps}/> } />
+            <components.Card.Header>{referrer ? `${referrer}` : 'Error'}</components.Card.Header>
+             {  referrer && redirect ?
+             <div>
+                <Route exact path="/" render={ (ownProps) => <Login {...props} {...ownProps}/> } />
+                <Route exact path="/forgotpassword" render={(ownProps) => <ForgotPassword {...props} {...ownProps}/> } />
+                <Route exact path="/signup" render={(ownProps) => <SignUp {...props} {...ownProps}/> } />
+              </div>
+              : <Error {...props} /> }
             </components.Card>
         </components.Container>
       </div>
-      </Router>
+      </Router> 
     );
 }
 
 App.propTypes = {
   redirect: React.PropTypes.string.isRequired,
-  style: React.PropTypes.string.isRequired
+  referrer: React.PropTypes.string.isRequired
 };
-
-
-const mapStateToProps = (state) => {
-  return { state: state};
-}
-
 
 export default StyleWrapperHOC(connect(state=>({state}), actions)(App));

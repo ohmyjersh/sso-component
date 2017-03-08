@@ -3,9 +3,8 @@ import * as DefaultComponents from '../styles/default';
 import * as Product1Components from '../styles/product1';
 import * as Product2Components  from '../styles/product2';
 
-const getComponents = (style) => {
-    console.log('get styles');
-    switch(style) {
+const getComponents = (referrer) => {
+    switch(referrer) {
         case 'product1':
             return Product1Components;
         case 'product2':
@@ -16,6 +15,6 @@ const getComponents = (style) => {
 }
 
 const StyleWrapperHOC = (WrappedComponent) => {
-  return (props) => <WrappedComponent {...props} components={getComponents(props.style)} />
+  return props => (<WrappedComponent {...props} components={getComponents(props.referrer)} />)
 }
 export default StyleWrapperHOC;

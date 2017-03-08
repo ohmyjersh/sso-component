@@ -76,8 +76,8 @@ export const Card = styled(Base.Card)`
 `;
 
  Card.Header = styled(Base.Card.Header)`
-  border: 1px solid #d9d9d9;
-  padding: 20px;
+   color: #ffffff;
+    background: #3498db;
 `;
 
 Card.Content = styled(Base.Card.Content)`

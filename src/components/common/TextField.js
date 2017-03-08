@@ -8,4 +8,12 @@ const TextField = (props) => {
     </div>)
 }
 
+TextField.propTypes = {
+    Label: React.PropTypes.func.isRequired,
+    Input: React.PropTypes.func.isRequired,
+    label: React.PropTypes.string.isRequired,
+    value: React.PropTypes.string.isRequired,
+    update: React.PropTypes.func.isRequired
+}
+
 export default TextField;

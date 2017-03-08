@@ -10,7 +10,6 @@ const LoginShell = (props) => {
     }
     return (
         <div>
-                <components.Card.Header>Login</components.Card.Header>
                 <components.Card.Content>
                 {currentState === 'LOGIN' ?
                     <Login {...props}/>
@@ -36,10 +35,10 @@ const Login = (props) => {
     const loginError = props.state.getIn(['login', 'error']);
     return (
         <div>
-            <TextField {...{...props.components, label:'Username', update: actions.updateUsername, value: username}}/>
-            <TextField {...{...props.components, label:'Password', update: actions.updatePassword, value: password}} />
+            <TextField {...{...props.components, label:'Username', update: actions.login.updateUsername, value: username}}/>
+            <TextField {...{...props.components, label:'Password', update: actions.login.updatePassword, value: password}} />
             {loginError? <components.Error>{loginError}</components.Error> : null }
-            <components.Button onClick={() => actions.submitLogin({username, password})} >Login</components.Button> 
+            <components.Button onClick={() => actions.login.submitLogin({username, password})} >Login</components.Button> 
         </div> 
     )
 }
@@ -50,9 +49,9 @@ const TwoFactor = (props) => {
     const tokenError = props.state.getIn(['login', 'error']);
     return (
         <div>
-            <TextField {...{...props.components, label:'Send Token', update: actions.updateToken, value: token}} />
+            <TextField {...{...props.components, label:'Send Token', update: actions.login.updateToken, value: token}} />
             {tokenError ? <components.Error>{tokenError}</components.Error> : null }
-            <components.Button onClick={() => actions.submitToken({token})} >Submit</components.Button>
+            <components.Button onClick={() => actions.login.submitToken({token})} >Submit</components.Button>
         </div>   
     )
 }

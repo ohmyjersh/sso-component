@@ -9,12 +9,11 @@ const SignUp = (props) => {
     const phoneNumber = props.state.getIn(['signup', 'phoneNumber']);
     return (
         <div>
-            <components.Card.Header>Sign Up!</components.Card.Header>
                 <components.Card.Content>
-                    <TextField {...{...props.components, label:'Username', update: actions.updateSignUsername, value: username}}/>              
-                    <TextField {...{...props.components, label:'Password', update: actions.updateSignPassword, value: password}}/>    
-                    <TextField {...{...props.components, label:'Confirm Password', update: actions.updateSignConfirmPassword, value: confirmPassword}}/>    
-                    <TextField {...{...props.components, label:'Phone Number', update: actions.updateSignPhoneNumber, value: phoneNumber}}/>    
+                    <TextField {...{...props.components, label:'Username', update: actions.signup.updateSignUsername, value: username}}/>              
+                    <TextField {...{...props.components, label:'Password', update: actions.signup.updateSignPassword, value: password}}/>    
+                    <TextField {...{...props.components, label:'Confirm Password', update: actions.signup.updateSignConfirmPassword, value: confirmPassword}}/>    
+                    <TextField {...{...props.components, label:'Phone Number', update: actions.signup.updateSignPhoneNumber, value: phoneNumber}}/>    
                     <components.Button>Sign Up!</components.Button>
                     </components.Card.Content>
                     <components.Card.Footer>

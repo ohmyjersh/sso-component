@@ -8,20 +8,16 @@ import App from './containers/App';
 import reducer from './state';
 
 const url = window.location.href;
-const style = _getParam('style', url);
+const referrer = _getParam('referrer', url);
 const redirect = _getParam('redirect', url);
 
 const initialState = Immutable.Map();
-const initialState = Immutable.Map({
-  redirect,
-  style
-});
 
 const store = createStore(reducer,initialState, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    <App redirect={redirect} style={style}/>
+    <App redirect={redirect} referrer={referrer}/>
   </Provider>,
   document.getElementById('root')
 );

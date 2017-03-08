@@ -10,11 +10,16 @@ export const Link = styled(Base.Link)`
 
 export const Button = styled(Base.Button)`
   background-color: #f7b334;
+  color:#ffffff;
   &:hover {
     background-color:#f9c565;
   }
 `;
 
 export const Card = Base.Card;
+Card.Header = styled(Base.Card.Header)`
+    color:#ffffff;
+    background-color: #f7b334;
+`
 export const Input = Base.Input;
 export const Container = Base.Container;

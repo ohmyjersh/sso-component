@@ -68,6 +68,9 @@ export const Card = styled.div`
 `;
 
  Card.Header = styled.div`
+ font-weight: bold;
+  font-size:25px;
+  text-align:center;
   border: 1px solid #d9d9d9;
   padding: 20px;
 `;
