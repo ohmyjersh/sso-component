@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux'
 import Login from '../components/Login';
@@ -12,6 +12,10 @@ import {actionCreators as actions} from '../state';
 
 
 const App = (props) => {
+    if(props.state.get('currentState') === 'LOGGEDIN') {
+      console.log('go to....');
+        window.location.href = props.redirect;
+    }
     return (
       <div className="App">
         <Login {...props} />
@@ -19,6 +23,12 @@ const App = (props) => {
       </div>
     );
 }
+
+App.propTypes = {
+  redirect: React.PropTypes.string.isRequired,
+  style: React.PropTypes.string.isRequired
+};
+
 
 const mapStateToProps = (state) => {
   return { state: state};

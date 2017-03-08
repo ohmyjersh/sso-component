@@ -4,7 +4,7 @@ const actionTypes =  {
     SUCCESS_LOGIN:'SUCCESS_LOGIN',
     ERROR_LOGIN: 'ERROR_LOGIN',
     SUCCESS_TOKEN:'SUCCESS_TOKEN',
-    ERROR_LOGIN: 'ERROR_TOKEN',
+    ERROR_TOKEN: 'ERROR_TOKEN',
     UPDATE_USERNAME: 'UPDATE_USERNAME',
     UPDATE_PASSWORD: 'UPDATE_PASSWORD',
     UPDATE_TOKEN: 'UPDATE_TOKEN',
@@ -16,18 +16,26 @@ const initialState = Immutable.Map({
     login: Immutable.Map({
         username:'',
         password:'',
-        error:''
+        error:'',
+        isFetching:false
     }),
     twofactor: Immutable.Map({
         token:'',
-        error:''
+        error:'',
+        isFetching:false
     }),
     forgotPassword: Immutable.Map({
         password:'',
-        error:''
+        error:'',
+        isFetching: false
     }),
     signUp: Immutable.Map({
-        
+        username:'',
+        password:'',
+        confirmPassword:'',
+        phoneNumber:'',
+        error:'',
+        isFetching:''
     })}
 );
 
@@ -35,25 +43,26 @@ export default (state = initialState, action) => {
     const {type, payload} = action;
     switch(type) {
         case actionTypes.SUCCESS_LOGIN:
-            console.log('success reducer');
             return state.set('currentState', '2FA')
                         .setIn(['login', 'username'],'')
                         .setIn(['login', 'password'],'')
                         .setIn(['login', 'error'], '');
         case actionTypes.ERROR_LOGIN:
-            console.log('in reducer, fail');
             return state.set('currentState', 'LOGIN')
                         .setIn(['login', 'username'],'')
                         .setIn(['login', 'password'],'')
                         .setIn(['login', 'error'], 'Error logging in....');
         case actionTypes.SUCCESS_TOKEN:
-            alert('YOU ARE LOGGED IN MOFO');
-            return state;
+            return state.set('currentState', 'LOGGEDIN')
+                        .setIn(['twofactor', 'token'],'')
+                        .setIn(['twofactor', 'error'], 'Error validating 2fa token....');
         case actionTypes.ERROR_TOKEN:
+            console.log('error token');
             return state.set('currentState', '2FA')
                         .setIn(['twofactor', 'token'],'')
                         .setIn(['twofactor', 'error'], 'Error validating 2fa token....');
         case actionTypes.UPDATE_TOKEN:
+            console.log(payload);
             return state.setIn(['twofactor', 'token'], payload);
         case actionTypes.UPDATE_USERNAME:
             return state.setIn(['login', 'username'], payload);
@@ -127,7 +136,6 @@ export const actionCreators = {
 }
 
 const handleRequest = (obj) => {
-    console.log(obj);
     return new Promise((resolve, reject) => {
         if(obj.hasOwnProperty('token')) {
             if(obj.token === '111111') {
