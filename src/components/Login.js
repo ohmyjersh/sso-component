@@ -1,8 +1,12 @@
 import React from 'react';
 import StyleWrapperHOC from './StyleWrapperHOC';
 const Login = (props) => {
-    const {components, actions} = props;
     console.log(props);
+    const {components, actions} = props;
+    if(props.state.getIn(['state', 'login', 'currentState'] === 'LOGGEDIN')) {
+      console.log('go to....');
+        window.location.href = props.redirect;
+    }
     const username = props.state.getIn(['login','username']);
     const password = props.state.getIn(['login', 'password']);
     const token = props.state.getIn(['twofactor', 'token']);
@@ -13,7 +17,7 @@ const Login = (props) => {
             <components.Card>
                 <components.Card.Header>Login</components.Card.Header>
                 <components.Card.Content>
-                {props.state.get('currentState') === 'LOGIN' ?
+                {props.state.getIn(['login', 'currentState']) === 'LOGIN' ?
                     <div>
                         <TextField {...{...props.components, label:'Username', update: actions.updateUsername, value: username}}/>
                         <TextField {...{...props.components, label:'Password', update: actions.updatePassword, value: password}} />
@@ -22,7 +26,7 @@ const Login = (props) => {
                     </div> 
                     : null 
                     } 
-                    {props.state.get('currentState') === '2FA' ?
+                    {props.state.getIn(['login', 'currentState']) === '2FA' ?
                         <div>
                         <TextField {...{...props.components, label:'Send Token', update: actions.updateToken, value: token}} />
                             {tokenError ? <components.Error>{tokenError}</components.Error> : null }
