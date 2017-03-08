@@ -2,8 +2,9 @@ import React from 'react';
 import StyleWrapperHOC from './StyleWrapperHOC';
 const Login = (props) => {
     const {components, actions} = props;
+    const currentState = props.state.getIn(['login','currentState']);
     console.log(actions);
-    if(props.state.getIn(['login','currentState']) === 'LOGGEDIN') {
+    if(currentState === 'LOGGEDIN') {
       console.log('go to....');
         window.location.href = props.redirect;
     }
@@ -17,7 +18,7 @@ const Login = (props) => {
             <components.Card>
                 <components.Card.Header>Login</components.Card.Header>
                 <components.Card.Content>
-                {props.state.getIn(['login', 'currentState']) === 'LOGIN' ?
+                {currentState === 'LOGIN' ?
                     <div>
                         <TextField {...{...props.components, label:'Username', update: actions.updateUsername, value: username}}/>
                         <TextField {...{...props.components, label:'Password', update: actions.updatePassword, value: password}} />
@@ -26,7 +27,7 @@ const Login = (props) => {
                     </div> 
                     : null 
                     } 
-                    {props.state.getIn(['login', 'currentState']) === '2FA' ?
+                    {currentState === '2FA' ?
                         <div>
                         <TextField {...{...props.components, label:'Send Token', update: actions.updateToken, value: token}} />
                             {tokenError ? <components.Error>{tokenError}</components.Error> : null }
