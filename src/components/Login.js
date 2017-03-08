@@ -1,10 +1,13 @@
 import React from 'react';
 import StyleWrapperHOC from './StyleWrapperHOC';
 const Login = (props) => {
-    console.log(props);
     const {components, actions} = props;
-    let username = null;
-    let password = null;
+    console.log(props);
+    const username = props.state.getIn(['login','username']);
+    const password = props.state.getIn(['login', 'password']);
+    const token = props.state.getIn(['twofactor', 'token']);
+    const loginError = props.state.getIn(['login', 'error']);
+    const tokenError = props.state.getIn(['twofactor', 'error']);
     return <div>
         <components.Container>
             <components.Card>
@@ -12,18 +15,18 @@ const Login = (props) => {
                 <components.Card.Content>
                 {props.state.get('currentState') === 'LOGIN' ?
                     <div>
-                        <TextField {...{...props.components,label:'Username'}} value={props.state.getIn(['login', 'username'])} update={props.actions.updateUsername}/>
-                        <TextField {...{...props.components,label:'Password'}} value={props.state.getIn(['login', 'password'])} update={props.actions.updatePassword}/>
-                        {props.state.getIn(['login', 'error']) ? <components.Error>asdf</components.Error> : null }
-                        <components.Button onClick={() => actions.submitLogin({username:props.state.getIn(['login', 'username']), password:getIn(['login', 'password'])})} >Login</components.Button> 
+                        <TextField {...{...props.components, label:'Username', update: actions.updateUsername, value: username}}/>
+                        <TextField {...{...props.components, label:'Password', update: actions.updatePassword, value: password}} />
+                        {loginError? <components.Error>{loginError}</components.Error> : null }
+                        <components.Button onClick={() => actions.submitLogin({username, password})} >Login</components.Button> 
                     </div> 
                     : null 
                     } 
                     {props.state.get('currentState') === '2FA' ?
                         <div>
-                            <TextField {...{...components, label:'Send Token'}} value={props.state.getIn(['twofactor', 'token'])} update={props.actions.updateToken}/> 
-                            {props.state.getIn(['twofactor', 'error']) ? <components.Error>asdf</components.Error> : null }
-                            <components.Button onClick={() => actions.submitLogin({username:username, password:password})} >Submit</components.Button>
+                        <TextField {...{...props.components, label:'Send Token', update: actions.updateToken, value: token}} />
+                            {tokenError ? <components.Error>{tokenError}</components.Error> : null }
+                            <components.Button onClick={() => actions.submitToken({token})} >Submit</components.Button>
                         </div>
                     : null
                     }
@@ -37,12 +40,13 @@ const Login = (props) => {
     </div>
 }
 
-const TextField = (props) => (
+const TextField = (props) => {
+    return(
     <div>
         {props.Label ? <props.Label>{props.label}</props.Label> : null}
-        <props.Input value={props.value} onChange={() => props.action(e.target.value)} />
-    </div>
-)
+        <props.Input value={props.value} onChange={(e) => props.update(e.target.value)} />
+    </div>)
+}
 
 
 export default StyleWrapperHOC(Login);

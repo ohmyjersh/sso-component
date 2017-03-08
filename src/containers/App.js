@@ -15,7 +15,7 @@ const App = (props) => {
     return (
       <div className="App">
         <Login {...props} />
-        {props.state.currentState === 'ForgotPassword' ? <ForgotPassword {...props} /> : null }
+        {props.state.get('currentState') === 'ForgotPassword' ? <ForgotPassword {...props} /> : null }
       </div>
     );
 }
