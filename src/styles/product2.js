@@ -2,6 +2,13 @@ import styled from 'styled-components';
 
 import * as Defaults from './default';
 
+export const Link = styled(Defaults.Link)`
+    color:#f7b334;
+    &:hover {
+     color: #f9c565;   
+    }
+`
+
 export const Button = styled(Defaults.Button)`
   background-color: #f7b334;
   &:hover {

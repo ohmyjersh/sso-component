@@ -1,6 +1,13 @@
-import styled, {injectGlobal} from 'styled-components';
+import styled from 'styled-components';
 
 import * as Defaults from './default';
+
+export const Link = styled(Defaults.Link)`
+    color:#a60003;
+    &:hover {
+     color: #a60003;   
+    }
+`
 
 export const Button = styled(Defaults.Button)`
     background-color: #a60003;

@@ -1,4 +1,12 @@
 import styled from 'styled-components';
+import { Link as RouterLink } from 'react-router-dom'
+
+export const Link = styled(RouterLink)`
+  color: #3498db;
+  &:hover { 
+    color: #3cb0fd;
+  }
+`;
 
 export const Button = styled.button`
   outline: none;

@@ -1,4 +1,5 @@
 import React from 'react';
+import Immutable from 'immutable';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -10,7 +11,8 @@ const url = window.location.href;
 const style = _getParam('style', url);
 const redirect = _getParam('redirect', url);
 
-const store = createStore(reducer, applyMiddleware(thunk));
+const initialState = Immutable.Map();
+const store = createStore(reducer,initialState, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
