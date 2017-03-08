@@ -1,26 +1,26 @@
 import React, {PropTypes} from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
+
 import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux'
 import Login from '../components/Login';
 import ForgotPassword from '../components/ForgotPassword';
+import SignUp from '../components/SignUp';
 import {actionCreators as actions} from '../state';
 
-// use redux to handle state and current step of auth
-// login => success => 2fa => redirect
-// reset password
-// sign up
-
-
 const App = (props) => {
-    if(props.state.get('currentState') === 'LOGGEDIN') {
-      console.log('go to....');
-        window.location.href = props.redirect;
-    }
     return (
+      <Router>
       <div className="App">
-        <Login {...props} />
-        {props.state.get('currentState') === 'ForgotPassword' ? <ForgotPassword {...props} /> : null }
+        <Route exact path="/" render={ (ownProps) => <Login {...props} {...ownProps}/> } />
+        <Route exact path="/forgotpassword" render={(ownProps) => <ForgotPassword {...props} {...ownProps}/> } />
+        <Route exact path="/signup" render={(ownProps) => <SignUp {...props} {...ownProps}/> } />
       </div>
+      </Router>
     );
 }
 
