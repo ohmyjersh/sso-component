@@ -1,22 +1,21 @@
 import styled from 'styled-components';
+import * as Base from './base';
 
-import * as Defaults from './default';
-
-export const Link = styled(Defaults.Link)`
+export const Link = styled(Base.Link)`
     color:#a60003;
     &:hover {
      color: #a60003;   
     }
 `
 
-export const Button = styled(Defaults.Button)`
+export const Button = styled(Base.Button)`
     background-color: #a60003;
     &:hover {
      background-color: #a60003;   
     }
 `;
 
-export const Input = styled(Defaults.Input)`
+export const Input = styled(Base.Input)`
     border: 1px solid #f1f2f2;
     border-radius: 0;
     background: #fff;
@@ -26,7 +25,7 @@ export const Input = styled(Defaults.Input)`
     font-size: 1rem;
   `;
   
-export const Label = styled.label`
+export const Label = styled(Base.Label)`
     font-family: "Gotham","Arial",sans-serif;
     display: inline-block;
     text-align: left;
@@ -35,8 +34,8 @@ export const Label = styled.label`
     min-width: 200px;
     position: relative;
 `
-export const Card = styled(Defaults.Card)`
+export const Card = styled(Base.Card)`
     &:hover {
       box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     }`;
-export const Container = Defaults.Container;
+export const Container = Base.Container;

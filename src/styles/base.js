@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import * as Base from './base';
+import { Link as RouterLink } from 'react-router-dom'
 
-export const Link = styled(Base.Link)`
-  color: #3498db;
+export const Link = styled(RouterLink)`
+  color: #000000;
   &:hover { 
-    color: #3cb0fd;
+    color: #000000;
   }
 `;
 
-export const Button = styled(Base.Button)`
+export const Button = styled.button`
   outline: none;
   border: none;
   -webkit-border-radius: 3;
@@ -16,21 +16,16 @@ export const Button = styled(Base.Button)`
   border-radius: 3px;
   text-shadow: 1px 1px 3px #666666;
   font-family: Arial;
-  color: #ffffff;
+  color: ##000000;
   font-size: 20px;
-  background: #3498db;
+  background: #ffffff;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
   width:100%;
   box-sizing: border-box;
-
-  &:hover { 
-  background: #3cb0fd;
-  text-decoration: none;
-  }
 `;
 
-export const Input = styled(Base.Input)`
+export const Input = styled.input`
     outline: none;
     position: relative;
     margin: 10px 0px;
@@ -41,31 +36,28 @@ export const Input = styled(Base.Input)`
     cursor: text;
     font-size: 15px;
     line-height: 1.5;
-    color: rgba(0,0,0,.65);
-    background-color: #fff;
+    color: #000000;
+    background-color: #ffffff;
     background-image: none;
     border: 1px solid #d9d9d9;
     border-radius: 4px;
     -webkit-transition: all .3s;
     transition: all .3s;
     box-sizing: border-box;
-
-  &:hover {
-    box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
-  }
 `;
 
-export const Container = styled(Base.Container)`
+export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
 `;
 
-export const Card = styled(Base.Card)`
+export const Card = styled.div`
     justify-content: center;
     overflow:hidden;
-    background: #fff;
+    color: #000000;
+    background-color: #ffffff;
     border-radius: 4px;
     position: relative;
     -webkit-transition: all .3s;
@@ -75,35 +67,36 @@ export const Card = styled(Base.Card)`
     min-width: 400px;
 `;
 
- Card.Header = styled(Base.Card.Header)`
+ Card.Header = styled.div`
   border: 1px solid #d9d9d9;
   padding: 20px;
 `;
 
-Card.Content = styled(Base.Card.Content)`
+Card.Content = styled.div`
   padding: 20px;
 `;
 
-Card.Footer = styled(Base.Card.Footer)`
+Card.Footer = styled.div`
   padding: 20px;
   display: flex;
   justify-content: space-between;
 `;
 
-export const Label = styled(Base.Label)`
+export const Label = styled.label`
     font-size: 20px;
-    color: black;
+    color: #000000;
+    background-color: #ffffff;
     margin-bottom: 10px;
     box-sizing: border-box;
 `;
 
-export const Error = styled(Base.Error)`
+export const Error = styled.div`
     border: 1px solid;
     border-radius: 3px;
     margin: 10px 0px;
     padding:12px;
-    color: #D8000C;
+    color: #000000;
+    background-color: #ffffff;
     font-size:12px;
-    background-color: #FFBABA;
     box-sizing: border-box;
 `

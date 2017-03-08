@@ -1,4 +1,4 @@
-import handleRequest from './fakeHandleRequest';
+import handleRequest from '../faker/fakeHandleRequest';
 import Immutable from 'immutable';
 
 const actionTypes =  {
