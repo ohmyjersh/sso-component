@@ -14,3 +14,25 @@ export default (obj, onResolve, onReject) => {
         }
     }).then(onResolve, onReject);
 }
+
+
+export const getComponentStylesAsync = (referrer, callback) => {
+    return new Promise((resolve, reject) => {
+        if(referrer === 'custom') {
+            return resolve();
+        }
+        return reject();
+    }).then(() => {
+        return callback({
+            button:'',
+            input:'',
+            label:'',
+            card:'',
+            cardHeader:'',
+            cardFooter:'',
+            cardContent:'',
+        })
+    }, () => {
+        return callback({});
+    });
+}
