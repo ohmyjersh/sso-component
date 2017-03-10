@@ -9,7 +9,7 @@ const TextField = (props) => {
 }
 
 TextField.propTypes = {
-    Label: React.PropTypes.func.isRequired,
+    Label: React.PropTypes.func,
     Input: React.PropTypes.func.isRequired,
     label: React.PropTypes.string.isRequired,
     value: React.PropTypes.string.isRequired,

@@ -16,23 +16,20 @@ export default (obj, onResolve, onReject) => {
 }
 
 
-export const getComponentStylesAsync = (referrer, callback) => {
-    return new Promise((resolve, reject) => {
+export const getComponentStylesAsync = (referrer) => {
         if(referrer === 'custom') {
-            return resolve();
+            return {
+                button:'color:#800080; background-color:#800080;',
+                input:'color:#800080; background-color:#800080;',
+                label:'color:#800080; background-color:#800080;',
+                card:'color:#800080; background-color:#800080;',
+                cardHeader:'color:#800080; background-color:#800080;',
+                cardFooter:'color:#800080; background-color:#800080;',
+                cardContent:'color:#800080; background-color:#800080;',
+                link:'color:#800080; background-color:#800080;',
+                error:'color:#800080; background-color:#800080;',
+                container:'color:#800080; background-color:#ffffff;'
+            };
         }
-        return reject();
-    }).then(() => {
-        return callback({
-            button:'',
-            input:'',
-            label:'',
-            card:'',
-            cardHeader:'',
-            cardFooter:'',
-            cardContent:'',
-        })
-    }, () => {
-        return callback({});
-    });
+        return {};
 }
