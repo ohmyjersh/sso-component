@@ -19,7 +19,6 @@ const getStyledComponents = (referrer) => {
                 return DefaultComponents();
             }
             return GenerateComponents(components);
-            return components;
     }
 }
 const StyleWrapperHOC = (WrappedComponent) => {
