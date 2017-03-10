@@ -42,7 +42,7 @@ const Product2Components = () => {
           background-color: #f7b334;
         `
   }
-  return GenerateComponents(styles);
+  return GenerateComponents(styles, false);
 }
 
 export default Product2Components;

@@ -11,7 +11,7 @@ const Error = (props) => {
 
 
 Error.propTypes = {
-    components: React.PropTypes.arrayOf(React.PropTypes.func)
+    components: React.PropTypes.object
 }
 
 export default Error;
