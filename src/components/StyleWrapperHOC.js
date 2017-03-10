@@ -1,20 +1,24 @@
 import React from 'react';
-import getComponents from '../styles/getComponents';
-import * as DefaultComponents from '../styles/default'; 
-import * as Product1Components from '../styles/product1';
-//import * as Product2Components  from '../styles/product2';
+import GenerateComponents from '../styles/generateComponents';
+import {getComponentStylesAsync} from '../faker/fakeHandleRequest';
+import DefaultComponents from '../styles/default'; 
+import Product1Components from '../styles/product1';
+import Product2Components from '../styles/product2';
 
 const getStyledComponents = (referrer) => {
     switch(referrer) {
         case 'product1':
             return Product1Components();
-        // case 'product2':
-        //     return Product2Components
+        case 'product2':
+            return Product2Components();
         case 'default':
             return DefaultComponents();
         default:
-            let components = getComponents(referrer);
-            console.log(components);
+            let components = getComponentStylesAsync(referrer);
+            if(!Object.keys(components).length){
+                return DefaultComponents();
+            }
+            return GenerateComponents(components);
             return components;
     }
 }

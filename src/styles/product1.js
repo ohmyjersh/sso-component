@@ -1,24 +1,21 @@
-import styled from 'styled-components';
-import * as Base from './base';
+import GenerateComponents from './generateComponents';
 
-
-
-export const Product1Components = () => {
-    return ({
-        Link: styled(Base.Link)`
+const Product1Components = () => {
+    const styles = {
+        link: `
             color:#a60003;
             &:hover {
             color: #a60003;   
             }
         `,
-        Button: styled(Base.Button)`
+        button: `
             background-color: #a60003;
             color: #ffffff;
             &:hover {
             background-color: #a60003;   
             }
         `,
-        Input:styled(Base.Input)`
+        input: `
             border: 1px solid #f1f2f2;
             border-radius: 0;
             background: #fff;
@@ -27,7 +24,7 @@ export const Product1Components = () => {
             margin-top: 1rem;
             font-size: 1rem;
         `,
-        Label: styled(Base.Label)`
+        label: `
             font-family: "Gotham","Arial",sans-serif;
             display: inline-block;
             text-align: left;
@@ -36,15 +33,16 @@ export const Product1Components = () => {
             min-width: 200px;
             position: relative;
         `,
-        Card: styled(Base.Card)`
+        card:`
             &:hover {
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
             }`,
-        Header:styled(Base.Card.Header)`
+        cardHeader:`
             color: #ffffff;
             background-color: #a60003;
-        `,
-        Container:Base.Container 
-        }
-    )
+        `
+  }
+  return GenerateComponents(styles);
 }
+
+export default Product1Components;
