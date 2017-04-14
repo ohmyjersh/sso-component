@@ -31,5 +31,19 @@ export const getComponentStylesAsync = (referrer) => {
                 container:'color:#800080; background-color:#ffffff;'
             };
         }
+        if(referrer === 'base') {
+            return {
+                button:'',
+                input:'',
+                label:'',
+                card:'',
+                cardHeader:'',
+                cardFooter:'',
+                cardContent:'',
+                link:'',
+                error:'',
+                container:''
+            };
+        }
         return {};
 }
